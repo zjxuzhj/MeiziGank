@@ -3,6 +3,7 @@ apply from: "config.gradle"
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -11,7 +12,7 @@ buildscript {
         //Gradle Bintray Plugin
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         //lambda
-        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
+        classpath 'me.tatarka:gradle-retrolambda:3.7.0'
     }
 }
 
@@ -19,6 +20,7 @@ allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+        mavenCentral()
         maven { url "https://maven.google.com" }
     }
 }

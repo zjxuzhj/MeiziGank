@@ -37,6 +37,7 @@
     <color name="quaterGrey">#CCCCCC</color>
     <color name="oneThirdGrey">#AAAAAA</color>
     <color name="mediumtGrey">#999999</color>
+    <color name="grey">#999999</color>
     <color name="silverGrey">#666666</color>
     <color name="dark">#000000</color>
     <color name="darkgrey">#506588</color>
@@ -126,4 +127,21 @@
     <color name="grad">#ff3c3c3c</color>
     <color name="gray01">#80666666</color>
     <color name="textColor_32">#ff323232</color>
+
+    <!--TabLayout-->
+    <color name="TabTextColor">#FFFFFF</color>
+    <color name="TabSelectColor">#FAFAFA</color>
+    <color name="TabIndicatorColor">#FFFFFF</color>
+
+    <!--gank-->
+    <color name="android">#1F8AFF</color>
+    <color name="ios">#F05D5E</color>
+    <color name="休息视频">#FFD034</color>
+    <color name="前端">#28B78D</color>
+    <color name="拓展资源">#F16745</color>
+    <color name="瞎推荐">#A199E9</color>
+
+
+    <!--Text-->
+    <color name="textColor">#424242</color>
 </resources>
