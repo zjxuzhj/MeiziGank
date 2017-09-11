@@ -17,8 +17,8 @@ import zhj.meizigank.ui.fragment.GankFragment;
 
 
 public class MainActivity extends MVPBaseActivity {
-    @BindView(R.id.tabLayout)
-    TabLayout tabLayout;
+//    @BindView(R.id.tabLayout)
+//    TabLayout tabLayout;
     @BindView(R.id.content_viewPager)
     ViewPager content_viewPager;
     private List<MVPBaseFragment> fragmentList;
@@ -42,13 +42,9 @@ public class MainActivity extends MVPBaseActivity {
     private void initView() {
         fragmentList = new ArrayList<>();
         fragmentList.add(new GankFragment());
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.add(R.id.fragment, new GankFragment());
-//        fragmentTransaction.commit();
-//        content_viewPager.setOffscreenPageLimit(3);//设置至少3个fragment，防止重复创建和销毁，造成内存溢出
+        content_viewPager.setOffscreenPageLimit(3);//设置至少3个fragment，防止重复创建和销毁，造成内存溢出
         content_viewPager.setAdapter(new ViewPagerFgAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
-        tabLayout.setupWithViewPager(content_viewPager);//将TabLayout和ViewPager关联起来
+//        tabLayout.setupWithViewPager(content_viewPager);//将TabLayout和ViewPager关联起来
     }
 
 }

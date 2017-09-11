@@ -15,12 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import zhj.meizigank.MyApp;
 import zhj.meizigank.util.StateUtils;
 
-/**
- * Created by Werb on 2016/8/18.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- * retrofit instance
- */
 public class ApiRetrofit {
 
     public GankApi GankApiService;

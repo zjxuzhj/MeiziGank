@@ -7,18 +7,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import zhj.meizigank.R;
 
-
-/**
- * Created by Werb on 2016/7/25.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- * Base of Activity
- */
 public abstract class MVPBaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
 
     protected T mPresenter;
@@ -58,14 +52,14 @@ public abstract class MVPBaseActivity<V, T extends BasePresenter<V>> extends App
     }
 
     private void setupSwipeRefresh() {
-//        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-//        if (mRefreshLayout != null) {
-//            mRefreshLayout.setColorSchemeResources(R.color.refresh_progress_1,
-//                    R.color.refresh_progress_2, R.color.refresh_progress_3);
-//            mRefreshLayout.setProgressViewOffset(true, 0, (int) TypedValue
-//                    .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
-//            mRefreshLayout.setOnRefreshListener(this::requestDataRefresh);
-//        }
+        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setColorSchemeResources(R.color.refresh_progress_1,
+                    R.color.refresh_progress_2, R.color.refresh_progress_3);
+            mRefreshLayout.setProgressViewOffset(true, 0, (int) TypedValue
+                    .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
+            mRefreshLayout.setOnRefreshListener(this::requestDataRefresh);
+        }
     }
 
     public void requestDataRefresh() {
