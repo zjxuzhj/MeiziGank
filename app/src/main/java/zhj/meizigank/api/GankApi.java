@@ -1,8 +1,8 @@
 package zhj.meizigank.api;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 import zhj.meizigank.bean.gank.GankData;
 import zhj.meizigank.bean.gank.Meizhi;
 import zhj.meizigank.bean.gank.Video;

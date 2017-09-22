@@ -6,12 +6,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import zhj.meizigank.MyApp;
 import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
@@ -50,16 +50,18 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
             mRecyclerView = gankFgView.getRecyclerView();
             layoutManager = gankFgView.getLayoutManager();
 
-            if(isLoadMore){
+            if (isLoadMore) {
                 page = page + 1;
             }
 
+//            Observable.zip()
             Observable.zip(gankApi.getMeizhiData(page), gankApi.getVideoData(page), this::creatDesc)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(meizhi1 -> {
                         displayMeizhi(context, meizhi1.getResults(), gankFgView, mRecyclerView);
-                    },this::loadError);
+                    }, this::loadError);
+
         }
 
 
@@ -76,8 +78,7 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
             if (meiZhiList == null) {
                 gankFgView.setDataRefresh(false);
                 return;
-            }
-            else {
+            } else {
                 list.addAll(meiZhiList);
             }
             adapter.notifyDataSetChanged();

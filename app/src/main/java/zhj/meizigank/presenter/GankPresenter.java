@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
 import zhj.meizigank.ui.adapter.GankActivityAdapter;
