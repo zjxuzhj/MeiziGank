@@ -4,17 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
-
 import java.util.List;
-
 import zhj.meizigank.ui.base.MVPBaseFragment;
 
-
-/**
- * Created by Werb on 2016/8/2.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- */
 public class ViewPagerFgAdapter extends FragmentPagerAdapter {
 
     private String tag;
@@ -32,7 +24,6 @@ public class ViewPagerFgAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
         return fragmentList.get(position);
-//        return null;
     }
 
 
@@ -46,7 +37,7 @@ public class ViewPagerFgAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        //super.destroyItem(container, position, object);
+        super.destroyItem(container, position, object);
     }
 
     @Override

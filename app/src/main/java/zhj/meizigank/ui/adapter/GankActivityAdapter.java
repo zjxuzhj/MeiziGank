@@ -18,11 +18,6 @@ import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
 
 
-/**
- * Created by Werb on 2016/8/30.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- */
 public class GankActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;

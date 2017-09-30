@@ -10,19 +10,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
+import zhj.meizigank.contract.GankContract;
 import zhj.meizigank.ui.adapter.GankActivityAdapter;
-import zhj.meizigank.ui.base.BasePresenter;
-import zhj.meizigank.ui.view.IGankView;
 
-/**
- * Created by Werb on 2016/8/30.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- */
-public class GankPresenter extends BasePresenter<IGankView> {
+
+public class GankPresenter extends GankContract.Presenter {
 
     private Context context;
-    private IGankView gankView;
+    private GankContract.IGankView gankView;
     private RecyclerView recyclerView;
 
     public GankPresenter(Context context) {
@@ -48,7 +43,7 @@ public class GankPresenter extends BasePresenter<IGankView> {
         Toast.makeText(context, R.string.gank_load_error, Toast.LENGTH_SHORT).show();
     }
 
-    private void displayGankList(Context context, List<Gank> gankList, IGankView gankView, RecyclerView recyclerView) {
+    private void displayGankList(Context context, List<Gank> gankList, GankContract.IGankView gankView, RecyclerView recyclerView) {
         GankActivityAdapter adapter = new GankActivityAdapter(context, gankList);
         recyclerView.setAdapter(adapter);
         gankView.setDataRefresh(false);

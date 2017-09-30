@@ -11,12 +11,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import zhj.meizigank.R;
 
-/**
- * Created by Werb on 2016/7/27.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- * Base of Fragment
- */
+
 public abstract class MVPBaseFragment<V, T extends BasePresenter<V>> extends Fragment {
 
     protected T mPresenter;
@@ -49,14 +44,14 @@ public abstract class MVPBaseFragment<V, T extends BasePresenter<V>> extends Fra
     }
 
     private void setupSwipeRefresh(View view){
-//        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
-//        if(mRefreshLayout != null){
-//            mRefreshLayout.setColorSchemeResources(R.color.refresh_progress_1,
-//                    R.color.refresh_progress_2,R.color.refresh_progress_3);
-//            mRefreshLayout.setProgressViewOffset(true, 0, (int) TypedValue
-//                    .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24,getResources().getDisplayMetrics()));
-//            mRefreshLayout.setOnRefreshListener(this::requestDataRefresh);
-//        }
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
+        if(mRefreshLayout != null){
+            mRefreshLayout.setColorSchemeResources(R.color.refresh_progress_1,
+                    R.color.refresh_progress_2,R.color.refresh_progress_3);
+            mRefreshLayout.setProgressViewOffset(true, 0, (int) TypedValue
+                    .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24,getResources().getDisplayMetrics()));
+            mRefreshLayout.setOnRefreshListener(this::requestDataRefresh);
+        }
     }
 
     public void requestDataRefresh() {

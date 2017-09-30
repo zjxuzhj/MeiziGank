@@ -21,13 +21,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
+import zhj.meizigank.ui.activity.GankActivity;
+import zhj.meizigank.ui.activity.PictureActivity;
 
-/**
- * Created by Werb on 2016/8/19.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- * Gank List Adapter
- */
+
 public class GankListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
@@ -40,13 +37,13 @@ public class GankListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gank_meizi,parent,false);
+        View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gank_meizi, parent, false);
         return new GankMeiZhiViewHolder(rootView);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof GankMeiZhiViewHolder){
+        if (holder instanceof GankMeiZhiViewHolder) {
             GankMeiZhiViewHolder gankMeiZhiViewHolder = (GankMeiZhiViewHolder) holder;
             gankMeiZhiViewHolder.bindItem(mList.get(position));
         }
@@ -57,7 +54,7 @@ public class GankListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return mList.size();
     }
 
-    class GankMeiZhiViewHolder extends RecyclerView.ViewHolder{
+    class GankMeiZhiViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.card_meizhi)
         CardView card_meizhi;
@@ -68,32 +65,31 @@ public class GankListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public GankMeiZhiViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
-
+            ButterKnife.bind(this, itemView);
 
         }
 
-        public void bindItem(Gank meizhi){
+        public void bindItem(Gank meizhi) {
             tv_meizhi_title.setText(meizhi.getDesc());
             Glide.with(context).load(meizhi.getUrl()).centerCrop().into(iv_meizhi);
 
             //点击图片
             iv_meizhi.setOnClickListener(v -> {
-//                Intent intent = PictureActivity.newIntent(context,meizhi.getUrl(),meizhi.getDesc());
-//                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,iv_meizhi,PictureActivity.TRANSIT_PIC);
-//                // Android 5.0+
-//                try {
-//                    ActivityCompat.startActivity((Activity) context,intent,optionsCompat.toBundle());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    context.startActivity(intent);
-//                }
+                Intent intent = PictureActivity.newIntent(context,meizhi.getUrl(),meizhi.getDesc());
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,iv_meizhi,PictureActivity.TRANSIT_PIC);
+                // Android 5.0+
+                try {
+                    ActivityCompat.startActivity((Activity) context,intent,optionsCompat.toBundle());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    context.startActivity(intent);
+                }
             });
 
             //点击card
             card_meizhi.setOnClickListener(v -> {
-//                Intent intent = GankActivity.newIntent(context,meizhi.getPublishedAt().getTime());
-//                context.startActivity(intent);
+                Intent intent = GankActivity.newIntent(context,meizhi.getPublishedAt().getTime());
+                context.startActivity(intent);
             });
         }
     }

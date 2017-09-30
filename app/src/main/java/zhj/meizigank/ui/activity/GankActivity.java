@@ -10,12 +10,12 @@ import java.util.Calendar;
 
 import butterknife.BindView;
 import zhj.meizigank.R;
+import zhj.meizigank.contract.GankContract;
 import zhj.meizigank.presenter.GankPresenter;
 import zhj.meizigank.ui.base.MVPBaseActivity;
-import zhj.meizigank.ui.view.IGankView;
 
 
-public class GankActivity extends MVPBaseActivity<IGankView,GankPresenter> implements IGankView {
+public class GankActivity extends MVPBaseActivity<GankContract.IGankView,GankPresenter> implements GankContract.IGankView {
 
     private static final String DATE = "date";
 
@@ -23,8 +23,8 @@ public class GankActivity extends MVPBaseActivity<IGankView,GankPresenter> imple
     private int month;
     private int day;
 
-    @BindView(R.id.gank_list)
-    RecyclerView gank_list;
+    @BindView(R.id.rv_gank_list)
+    RecyclerView mRv_gank_list;
 
     @Override
     protected GankPresenter createPresenter() {
@@ -41,7 +41,7 @@ public class GankActivity extends MVPBaseActivity<IGankView,GankPresenter> imple
         super.onCreate(savedInstanceState);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        gank_list.setLayoutManager(layoutManager);
+        mRv_gank_list.setLayoutManager(layoutManager);
 
         setTitle("Gank の 今日特供");
         parseIntent();
@@ -87,6 +87,6 @@ public class GankActivity extends MVPBaseActivity<IGankView,GankPresenter> imple
 
     @Override
     public RecyclerView getRecyclerView() {
-        return gank_list;
+        return mRv_gank_list;
     }
 }

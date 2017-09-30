@@ -9,16 +9,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import zhj.meizigank.ui.base.BasePresenter;
-import zhj.meizigank.ui.view.IGankWebView;
+import zhj.meizigank.contract.GankWebContract;
 
 
-/**
- * Created by Werb on 2016/8/31.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- */
-public class GankWebPresenter extends BasePresenter<IGankWebView> {
+
+public class GankWebPresenter extends GankWebContract.Presenter {
 
     private Activity activity;
 
@@ -26,9 +21,9 @@ public class GankWebPresenter extends BasePresenter<IGankWebView> {
         this.activity = activity;
     }
 
-    public void setWebView(String url){
+    public void setWebView(String url) {
 
-        IGankWebView urlView = getView();
+        GankWebContract.IGankWebView urlView = getView();
         ProgressBar progressBar = urlView.getProgressBar();
         WebView webView = urlView.getWebView();
 
@@ -72,7 +67,7 @@ public class GankWebPresenter extends BasePresenter<IGankWebView> {
 
             @Override
             public void onReceivedTitle(WebView view, String title) {
-                System.out.println("网页title："+title);
+                System.out.println("网页title：" + title);
                 activity.setTitle(title);
                 super.onReceivedTitle(view, title);
             }

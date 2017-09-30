@@ -17,21 +17,15 @@ import zhj.meizigank.R;
 import zhj.meizigank.bean.gank.Gank;
 import zhj.meizigank.bean.gank.Meizhi;
 import zhj.meizigank.bean.gank.Video;
+import zhj.meizigank.contract.GankFgContract;
 import zhj.meizigank.ui.adapter.GankListAdapter;
-import zhj.meizigank.ui.base.BasePresenter;
-import zhj.meizigank.ui.view.IGankFgView;
 import zhj.meizigank.util.DateUtils;
 
 
-/**
- * Created by Werb on 2016/8/18.
- * Werb is Wanbo.
- * Contact Me : werbhelius@gmail.com
- */
-public class GankFgPresenter extends BasePresenter<IGankFgView> {
+public class GankFgPresenter extends GankFgContract.Presenter {
 
     private Context context;
-    private IGankFgView gankFgView;
+    private GankFgContract.IGankFgView gankFgView;
     private RecyclerView mRecyclerView;
     private GridLayoutManager layoutManager;
     private GankListAdapter adapter;
@@ -41,7 +35,7 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
     private boolean isLoadMore = false; // 是否加载过更多
 
     public GankFgPresenter(Context context) {
-        this.context = MyApp.mContext;
+        this.context = context;
     }
 
     public void getGankData() {
@@ -54,7 +48,6 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
                 page = page + 1;
             }
 
-//            Observable.zip()
             Observable.zip(gankApi.getMeizhiData(page), gankApi.getVideoData(page), this::creatDesc)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +66,7 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
         Toast.makeText(context, R.string.load_error, Toast.LENGTH_SHORT).show();
     }
 
-    private void displayMeizhi(Context context, List<Gank> meiZhiList, IGankFgView gankFgView, RecyclerView recyclerView) {
+    private void displayMeizhi(Context context, List<Gank> meiZhiList, GankFgContract.IGankFgView gankFgView, RecyclerView recyclerView) {
         if (isLoadMore) {
             if (meiZhiList == null) {
                 gankFgView.setDataRefresh(false);
@@ -96,8 +89,7 @@ public class GankFgPresenter extends BasePresenter<IGankFgView> {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    lastVisibleItem = layoutManager
-                            .findLastVisibleItemPosition();
+                    lastVisibleItem = layoutManager.findLastVisibleItemPosition();
                     if (layoutManager.getItemCount() == 1) {
                         return;
                     }
