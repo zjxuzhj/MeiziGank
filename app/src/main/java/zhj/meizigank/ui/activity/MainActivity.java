@@ -1,8 +1,12 @@
 package zhj.meizigank.ui.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +19,41 @@ import zhj.meizigank.ui.base.MVPBaseActivity;
 import zhj.meizigank.ui.base.MVPBaseFragment;
 import zhj.meizigank.ui.fragment.GankFragment;
 
+import static zhj.meizigank.R.id.titleText;
+
 
 public class MainActivity extends MVPBaseActivity {
 //    @BindView(R.id.tabLayout)
 //    TabLayout tabLayout;
     @BindView(R.id.content_viewPager)
     ViewPager content_viewPager;
+    @BindView(R.id.heder_pic)
+    ImageView heder_pic;
+    @BindView(R.id.appBarlayout)
+    AppBarLayout appBarlayout;
+    @BindView(R.id.titleText)
+    TextView titleText;
     private List<MVPBaseFragment> fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        appBarlayout.addOnOffsetChangedListener(new MyOffsetChangedListener());
     }
+    private class MyOffsetChangedListener implements AppBarLayout.OnOffsetChangedListener{
 
+        @Override
+        public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+            float progress = Math.abs(verticalOffset)*1.0f/appBarLayout.getTotalScrollRange();
+            if (progress>=0.4){
+                titleText.setAlpha(1-progress);
+            }else {
+                titleText.setAlpha(1);
+                titleText.setText("aaa");
+            }
+        }
+    }
     @Override
     protected BasePresenter createPresenter() {
         return null;

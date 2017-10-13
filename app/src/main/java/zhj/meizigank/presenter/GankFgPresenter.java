@@ -89,16 +89,16 @@ public class GankFgPresenter extends GankFgContract.Presenter {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    lastVisibleItem = layoutManager.findLastVisibleItemPosition();
-                    if (layoutManager.getItemCount() == 1) {
-                        return;
-                    }
-                    if (lastVisibleItem + 1 == layoutManager
-                            .getItemCount()) {
-                        gankFgView.setDataRefresh(true);
-                        isLoadMore = true;
-                        new Handler().postDelayed(() -> getGankData(), 1000);
-                    }
+//                    lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+//                    if (layoutManager.getItemCount() == 1) {
+//                        return;
+//                    }
+//                    if (lastVisibleItem + 1 == layoutManager
+//                            .getItemCount()) {
+//                        gankFgView.setDataRefresh(true);
+//                        isLoadMore = true;
+//                        new Handler().postDelayed(() -> getGankData(), 1000);
+//                    }
                 }
             }
 

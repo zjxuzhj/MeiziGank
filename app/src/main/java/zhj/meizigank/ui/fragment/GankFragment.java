@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import zhj.meizigank.R;
@@ -20,6 +21,7 @@ public class GankFragment extends MVPBaseFragment<GankFgContract.IGankFgView,Gan
 
     @BindView(R.id.content_list)
     RecyclerView mRv_content_list;
+
 
     @Override
     protected GankFgPresenter createPresenter() {
